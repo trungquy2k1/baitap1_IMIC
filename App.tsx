@@ -1,118 +1,110 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React  from "react";
+import { SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+const LoginScreen = () => {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
+  <SafeAreaView style = {styles.root}>
+    <View style={styles.container }>
+      <Text style ={styles.text} > Yolo System </Text>
+      <TextInput style={styles.input} placeholder="Tên đăng nhập "/>
+      <TextInput style={styles.input} placeholder="Mật khẩu "/>
+      <TouchableOpacity style={styles.button}>
+        <Text style={{fontWeight:'bold',color:'white', fontSize:18}}>
+          LOGIN
+        </Text>
+      </TouchableOpacity>
+      <Text style={styles.tex1}>
+        OR
       </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+      <TouchableOpacity style={styles.button1}>
+        <Text style={{fontWeight:'bold',color:'white',fontSize:18}}>
+          Facebook
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button2}>
+        <Text style={{fontWeight:'bold',color:'white',fontSize:18}}>
+          Google
+        </Text>
+      </TouchableOpacity>
     </View>
-  );
-}
+  </SafeAreaView>
+ );
 
-function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+};
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+const styles = StyleSheet.create ({
+  root :{
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical:140,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  container:{
+
+    // borderRadius: 10,
+    // borderWidth: 1,
+    // borderColor: 'gray',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  text :{
+    color : 'green',
+    fontSize: 50,
+    fontWeight:'700',
+    margin : 8,
+    textAlign:'center',
+    justifyContent:'center',
+    textAlignVertical:'center',
+
   },
-  highlight: {
-    fontWeight: '700',
+  
+  input:{
+      height:40,
+      width:370,
+      marginHorizontal: 16,
+      borderColor:'gray',
+      borderRadius:10,
+      borderWidth:1,
+      marginTop:10,
+
+  },
+  button:{
+    height:40,
+    margin:4,
+    backgroundColor:'#99109c',
+    alignItems:'center',
+    justifyContent:'center',
+    borderRadius:60,
+    marginHorizontal: 16,
+  },
+  tex1 :{
+    color:'green',
+    fontSize:40,
+    fontWeight:'700',
+    textAlign:'center',
+    marginVertical:20
+
+  },
+  button1:{
+    height:40,
+    margin:4,
+    backgroundColor:'#0b8a0b',
+    alignItems:'center',
+    justifyContent:'center',
+    borderRadius:60,
+    marginHorizontal: 16,
+    
+  },
+  button2:{
+    height:40,
+    margin:4,
+    backgroundColor:'#e01d1d',
+    alignItems:'center',
+    justifyContent:'center',
+    borderRadius:60,
+    marginHorizontal: 16,
   },
 });
 
-export default App;
+export default LoginScreen;
