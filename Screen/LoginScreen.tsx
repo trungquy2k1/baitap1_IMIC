@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -8,13 +8,15 @@ import {
   View,
   Alert,
 } from 'react-native';
+import {AppContext} from './AppContext';
 
-export default function LoginScreen() {
+export default function LoginScreen({navigation}) {
   const [username, setUsername] = useState('');
   const [pass, setPass] = useState('');
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [error, setError] = useState('');
+  const {name, setName} = useContext(AppContext);
 
   useEffect(() => {
     Alert.alert(
@@ -30,27 +32,29 @@ export default function LoginScreen() {
       ],
       {cancelable: false},
     );
-  }, [6]);
+  }, []);
 
   const handleLogin = () => {
     if (username === '') {
-        setUsernameError('Vui lòng điền thông tin');
-      } else {
-        setUsernameError('');
-      }
-  
-      if (pass === '') {
-        setPasswordError('Vui lòng điền thông tin');
-      } else {
-        setPasswordError('');
-      }
-  
-      if (username !== '' && pass !== '') {
-        setError('');
-        Alert.alert(`Chaof mừng ${username} đăng nhập`)
-      } else {
-        setError('Vui lòng điền đủ thông tin agggggggg');
-      }
+      setUsernameError('Vui lòng điền thông tin');
+    } else {
+      setUsernameError('');
+    }
+
+    if (pass === '') {
+      setPasswordError('Vui lòng điền thông tin');
+    } else {
+      setPasswordError('');
+    }
+
+    if (username !== '' && pass !== '') {
+      setError('');
+      Alert.alert(`Chào mừng ${username} đăng nhập`);
+      setName(username);
+      navigation.navigate('HomePage');
+    } else {
+      setError('Vui lòng điền đủ thông tin agggggggg');
+    }
   };
 
   return (
@@ -100,7 +104,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginVertical: 140,
-   
   },
   container: {
     // borderRadius: 10,
